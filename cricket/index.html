@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cricket Scorecard</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
+    <link href="css/Bootstrap.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/Bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="js/custom.js"></script>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-md-8 offset-md-2 bg-darkblue p-0">
+          <div class="col-12">
+            <h3 class="my-5 px-3 text-white display-6 text-center">Fine Calculator</h3>
+          </div>
+          <div class="col-12">
+            <nav class="bg-white">
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button
+                  class="nav-link active text-dark rounded-0 border-0"
+                  id="nav-home-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-home"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-home"
+                  aria-selected="true"
+                >
+                  Batting
+                  <img src="./images/cricket-bat.png" class="tab-icons" />
+                </button>
+                <button
+                  class="nav-link text-dark rounded-0 border-0"
+                  id="nav-profile-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-profile"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-profile"
+                  aria-selected="false"
+                >
+                  Bowling
+                  <img src="./images/cricket-ball.png" class="tab-icons" />
+                </button>
+                <button
+                  class="nav-link text-dark rounded-0 border-0"
+                  id="nav-contact-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-contact"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-contact"
+                  aria-selected="false"
+                >
+                  Fielding <img src="./images/catching.png" class="tab-icons" />
+                </button>
+                <button
+                  class="nav-link text-dark rounded-0 border-0"
+                  id="nav-disabled-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-disabled"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-disabled"
+                  aria-selected="false"
+                >
+                  Late <img src="./images/clock.png" class="tab-icons" />
+                </button>
+              </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div
+                class="tab-pane fade show active"
+                id="nav-home"
+                role="tabpanel"
+                aria-labelledby="nav-home-tab"
+                tabindex="0"
+              >
+                <div class="container p-4 bg-white">
+                  <div class="row">
+                    <div
+                      class="col-12 col-md-8 offset-md-2 heading-bg mb-5"
+                    ></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 col-md-8 offset-md-2">
+                      <form>
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6">
+                            <label for="runs" class="form-label"
+                              >Runs Scored</label
+                            >
+                            <input
+                              type="number"
+                              id="runs"
+                              class="form-control"
+                              name="runs"
+                              required
+                              onchange="calculatePoints()"
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="balls" class="form-label"
+                              >Balls Faced</label
+                            >
+                            <input
+                              type="number"
+                              id="balls"
+                              class="form-control"
+                              name="balls"
+                              required
+                              onchange="calculatePoints()"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6">
+                            <label for="strikeRate" class="form-label"
+                              >Strike Rate</label
+                            >
+                            <input
+                              type="number"
+                              id="strikeRate"
+                              class="form-control"
+                              name="strikeRate"
+                              readonly
+                              disabled
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="dotBalls" class="form-label"
+                              >Dot Balls Faced</label
+                            >
+                            <input
+                              type="number"
+                              id="dotBalls"
+                              class="form-control"
+                              name="dotBalls"
+                              onchange="calculatePoints()"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6">
+                            <label for="foursBt" class="form-label"
+                              >Fours</label
+                            >
+                            <input
+                              type="number"
+                              id="foursBt"
+                              class="form-control"
+                              name="fours"
+                              onchange="calculatePoints()"
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="sixesBt" class="form-label"
+                              >Sixes</label
+                            >
+                            <input
+                              type="number"
+                              id="sixesBt"
+                              class="form-control"
+                              name="sixes"
+                              onchange="calculatePoints()"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6">
+                            <label for="battingPoints" class="form-label"
+                              >Batting Points</label
+                            >
+                            <input
+                              type="number"
+                              id="battingPoints"
+                              class="form-control"
+                              name="battingPoints"
+                              readonly
+                              disabled
+                              onchange="calculatePoints()"
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="boundaryCredits" class="form-label"
+                              >Boundary Credits</label
+                            >
+                            <input
+                              type="number"
+                              id="boundaryCredits"
+                              class="form-control"
+                              name="boundaryCredits"
+                              readonly
+                              disabled
+                              onchange="calculatePoints()"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6">
+                            <label for="battingFine" class="form-label"
+                              >Batting Fine</label
+                            >
+                            <input
+                              type="number"
+                              id="battingFine"
+                              class="form-control"
+                              name="battingFine"
+                              readonly
+                              disabled
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="dotBallFine" class="form-label"
+                              >Dot Ball Fine</label
+                            >
+                            <input
+                              type="number"
+                              id="dotBallFine"
+                              class="form-control"
+                              name="dotBallFine"
+                              readonly
+                              disabled
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6">
+                            <label for="totalFineBt" class="form-label"
+                              >Total Fine</label
+                            >
+                            <input
+                              type="number"
+                              id="totalFineBt"
+                              class="form-control"
+                              name="totalFine"
+                              readonly
+                              disabled
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="totalBattingCredits" class="form-label"
+                              >Total Credits</label
+                            >
+                            <input
+                              type="number"
+                              id="totalBattingCredits"
+                              class="form-control"
+                              name="totalBattingCredits"
+                              readonly
+                              disabled
+                            />
+                          </div>
+                        </div>
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-12">
+                            <label for="battingPayment" class="form-label"
+                              >Batting Payment</label
+                            >
+                            <input
+                              type="text"
+                              id="battingPayment"
+                              class="form-control result text-white"
+                              name="battingPayment"
+                              readonly
+                              disabled
+                            />
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="nav-profile"
+                role="tabpanel"
+                aria-labelledby="nav-profile-tab"
+                tabindex="0"
+              >
+                <div class="container p-4 bg-white">
+                  <div class="row">
+                    <div
+                      class="col-12 col-md-8 offset-md-2 heading-bg mb-5"
+                    ></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 col-md-8 offset-md-2">
+                      <form>
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6">
+                            <label for="oversBowled" class="form-label"
+                              >Overs Bowled</label
+                            >
+                            <input
+                              type="number"
+                              id="oversBowled"
+                              name="oversBowled"
+                              class="form-control"
+                              required
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="runsGiven" class="form-label"
+                              >Runs Given</label
+                            >
+                            <input
+                              type="number"
+                              id="runsGiven"
+                              name="runsGiven"
+                              class="form-control"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6">
+                            <label for="economy" class="form-label"
+                              >Economy</label
+                            >
+                            <input
+                              type="text"
+                              id="economy"
+                              name="economy"
+                              class="form-control"
+                              disabled
+                              readonly
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="economyCredits" class="form-label"
+                              >Economy Credits</label
+                            >
+                            <input
+                              type="text"
+                              id="economyCredits"
+                              name="economyCredits"
+                              class="form-control"
+                              disabled
+                              readonly
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6">
+                            <label for="economyFine" class="form-label"
+                              >Economy Fine</label
+                            >
+                            <input
+                              type="text"
+                              id="economyFine"
+                              name="economyFine"
+                              class="form-control"
+                              disabled
+                              readonly
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="wickets" class="form-label"
+                              >Wickets</label
+                            >
+                            <input
+                              type="number"
+                              id="wickets"
+                              name="wickets"
+                              class="form-control"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6">
+                            <label for="wicketCredits" class="form-label"
+                              >Wicket Credits</label
+                            >
+                            <input
+                              type="text"
+                              id="wicketCredits"
+                              name="wicketCredits"
+                              class="form-control"
+                              disabled
+                              readonly
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="maiden" class="form-label"
+                              >Maiden</label
+                            >
+                            <input
+                              type="number"
+                              id="maiden"
+                              class="form-control"
+                              name="maiden"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6">
+                            <label for="maidenCredits" class="form-label"
+                              >Maiden Credits</label
+                            >
+                            <input
+                              type="text"
+                              id="maidenCredits"
+                              class="form-control"
+                              name="maidenCredits"
+                              disabled
+                              readonly
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="totalCredits" class="form-label"
+                              >Total Credits</label
+                            >
+                            <input
+                              type="text"
+                              id="totalCredits"
+                              name="totalCredits"
+                              class="form-control"
+                              disabled
+                              readonly
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6">
+                            <label for="fours" class="form-label">4's</label>
+                            <input
+                              type="number"
+                              id="fours"
+                              class="form-control"
+                              name="fours"
+                              required
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="sixes" class="form-label">6's</label>
+                            <input
+                              type="number"
+                              id="sixes"
+                              class="form-control"
+                              name="sixes"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6">
+                            <label for="boundaryFine" class="form-label"
+                              >Boundary Fine:</label
+                            >
+                            <input
+                              type="text"
+                              id="boundaryFine"
+                              class="form-control"
+                              name="boundaryFine"
+                              disabled
+                              readonly
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="twoOrMoreFours" class="form-label"
+                              >2 or More Fours in an Over</label
+                            >
+                            <input
+                              type="number"
+                              id="twoOrMoreFours"
+                              class="form-control"
+                              name="twoOrMoreFours"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6">
+                            <label for="twoOrMoreSixes" class="form-label"
+                              >2 or More Sixes in an Over</label
+                            >
+                            <input
+                              type="number"
+                              id="twoOrMoreSixes"
+                              class="form-control"
+                              name="twoOrMoreSixes"
+                              required
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label
+                              for="continuousBoundariesFine"
+                              class="form-label"
+                              >Continuous Boundaries Fine</label
+                            >
+                            <input
+                              type="text"
+                              id="continuousBoundariesFine"
+                              class="form-control"
+                              name="continuousBoundariesFine"
+                              disabled
+                              readonly
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6">
+                            <label for="totalFine" class="form-label"
+                              >Total Fine</label
+                            >
+                            <input
+                              type="text"
+                              id="totalFine"
+                              class="form-control"
+                              name="totalFine"
+                              disabled
+                              readonly
+                            />
+                          </div>
+                        </div>
+                         <div class="row mb-2">
+                          <div class="col-12 col-md-12">
+                            <label for="bowlingPayment" class="form-label"
+                              >Bowling Payment</label
+                            >
+                            <input
+                              type="text"
+                              id="bowlingPayment"
+                              class="form-control result text-white"
+                              name="bowlingPayment"
+                              disabled
+                              readonly
+                            />
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="nav-contact"
+                role="tabpanel"
+                aria-labelledby="nav-contact-tab"
+                tabindex="0"
+              >
+                <div class="container p-4 bg-white">
+                  <div class="row">
+                    <div
+                      class="col-12 col-md-8 offset-md-2 heading-bg mb-5"
+                    ></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 col-md-8 offset-md-2">
+                      <form>
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6"></div>
+                          <div class="col-12 col-md-6"></div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6"></div>
+                          <div class="col-12 col-md-6"></div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6"></div>
+                          <div class="col-12 col-md-6"></div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6"></div>
+                          <div class="col-12 col-md-6"></div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6"></div>
+                          <div class="col-12 col-md-6"></div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6"></div>
+                          <div class="col-12 col-md-6"></div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="nav-disabled"
+                role="tabpanel"
+                aria-labelledby="nav-disabled-tab"
+                tabindex="0"
+              >
+                <div class="container p-4 bg-white">
+                  <div class="row">
+                    <div
+                      class="col-12 col-md-8 offset-md-2 heading-bg mb-5"
+                    ></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 col-md-8 offset-md-2">
+                      <form>
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6"></div>
+                          <div class="col-12 col-md-6"></div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6"></div>
+                          <div class="col-12 col-md-6"></div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6"></div>
+                          <div class="col-12 col-md-6"></div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6"></div>
+                          <div class="col-12 col-md-6"></div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6"></div>
+                          <div class="col-12 col-md-6"></div>
+                        </div>
+
+                        <div class="row mb-2">
+                          <div class="col-12 col-md-6"></div>
+                          <div class="col-12 col-md-6"></div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
