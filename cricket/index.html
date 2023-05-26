@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cricket Scorecard</title>
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
     <link href="css/Bootstrap.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css"
+    />
     <link href="css/style.css" rel="stylesheet" />
     <script src="js/Bootstrap.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -13,15 +20,25 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-12 col-md-8 offset-md-2 bg-darkblue p-0">
+        <div class="col-12 col-md-8 offset-md-2 p-0">
           <div class="col-12">
-            <h3 class="my-5 px-3 text-white display-6 text-center">Fine Calculator</h3>
+            <h3
+              class="p-3 m-0 text-white fw-semibold text-center bg-darkblue position-fixed top-0 start-0 end-0"
+            >
+              Fine Calculator
+            </h3>
           </div>
           <div class="col-12">
-            <nav class="bg-white">
-              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <nav class="bg-white position-relative">
+              <!-- <a
+                class="position-absolute openpdf" title="Rules PDF"
+                href="./pdf/UpdatedRules.pdf"
+                target="_blank"
+                >Open Rules PDF</a
+              > -->
+              <div class="nav nav-tabs bg-white position-fixed start-0 end-0" id="nav-tab" role="tablist">
                 <button
-                  class="nav-link active text-dark rounded-0 border-0"
+                  class="nav-link active text-dark rounded-0 border-0 px-3 py-4"
                   id="nav-home-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#nav-home"
@@ -34,7 +51,7 @@
                   <img src="./images/cricket-bat.png" class="tab-icons" />
                 </button>
                 <button
-                  class="nav-link text-dark rounded-0 border-0"
+                  class="nav-link text-dark rounded-0 border-0 px-3 py-4"
                   id="nav-profile-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#nav-profile"
@@ -47,7 +64,7 @@
                   <img src="./images/cricket-ball.png" class="tab-icons" />
                 </button>
                 <button
-                  class="nav-link text-dark rounded-0 border-0"
+                  class="nav-link text-dark rounded-0 border-0 px-3 py-4"
                   id="nav-contact-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#nav-contact"
@@ -59,7 +76,7 @@
                   Fielding <img src="./images/catching.png" class="tab-icons" />
                 </button>
                 <button
-                  class="nav-link text-dark rounded-0 border-0"
+                  class="nav-link text-dark rounded-0 border-0 px-3 py-4"
                   id="nav-disabled-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#nav-disabled"
@@ -69,6 +86,19 @@
                   aria-selected="false"
                 >
                   Late <img src="./images/clock.png" class="tab-icons" />
+                </button>
+                <button
+                  class="nav-link text-dark rounded-0 border-0 px-3 py-4"
+                  id="umpires-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#umpires-tab-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="umpires-tab"
+                  aria-selected="false"
+                >
+                  Umpire
+                  <img src="./images/hat-icon.png" class="tab-icons hat" />
                 </button>
               </div>
             </nav>
@@ -83,13 +113,41 @@
                 <div class="container p-4 bg-white">
                   <div class="row">
                     <div
-                      class="col-12 col-md-8 offset-md-2 heading-bg mb-5"
+                      class="col-12 col-md-8 offset-md-2 heading-bg mb-5 d-none d-sm-block"
                     ></div>
                   </div>
                   <div class="row">
                     <div class="col-12 col-md-8 offset-md-2">
-                      <form>
-                        <div class="row mb-2">
+                      <form id="myFormBatting">
+                        <div class="row mb-2 g-4">
+                          <div class="col-12">
+                            <label for="playerName" class="form-label"
+                              >Player Name</label
+                            >
+                            <select
+                              id="playerName"
+                              class="form-select"
+                              name="playerName"
+                              required
+                            >
+                              <option value="Select a Player" selected>
+                                Select a Player
+                              </option>
+                              <option value="Sathish">Sathish</option>
+                              <option value="Varun">Varun</option>
+                              <option value="Prabhakaran">Prabhakaran</option>
+                              <option value="Barathi">Barathi</option>
+                              <option value="Ezhilan">Ezhilan</option>
+                              <option value="Srinath">Srinath</option>
+                              <option value="Sakthi">Sakthi</option>
+                              <option value="Prabhakar">Prabhakar</option>
+                              <option value="Surendar">Surendar</option>
+                              <option value="Subash">Subash</option>
+                              <option value="Veera">Veera</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="row mb-2 g-4">
                           <div class="col-12 col-md-6">
                             <label for="runs" class="form-label"
                               >Runs Scored</label
@@ -118,7 +176,7 @@
                           </div>
                         </div>
 
-                        <div class="row mb-2">
+                        <div class="row mb-2 g-4">
                           <div class="col-12 col-md-6">
                             <label for="strikeRate" class="form-label"
                               >Strike Rate</label
@@ -146,7 +204,7 @@
                           </div>
                         </div>
 
-                        <div class="row mb-2">
+                        <div class="row mb-2 g-4">
                           <div class="col-12 col-md-6">
                             <label for="foursBt" class="form-label"
                               >Fours</label
@@ -173,7 +231,7 @@
                           </div>
                         </div>
 
-                        <div class="row mb-2">
+                        <div class="row mb-2 g-4">
                           <div class="col-12 col-md-6">
                             <label for="battingPoints" class="form-label"
                               >Batting Points</label
@@ -204,7 +262,7 @@
                           </div>
                         </div>
 
-                        <div class="row mb-2">
+                        <div class="row mb-2 g-4">
                           <div class="col-12 col-md-6">
                             <label for="battingFine" class="form-label"
                               >Batting Fine</label
@@ -233,7 +291,7 @@
                           </div>
                         </div>
 
-                        <div class="row mb-2">
+                        <div class="row mb-2 g-4">
                           <div class="col-12 col-md-6">
                             <label for="totalFineBt" class="form-label"
                               >Total Fine</label
@@ -241,7 +299,7 @@
                             <input
                               type="number"
                               id="totalFineBt"
-                              class="form-control"
+                              class="form-control red-bg"
                               name="totalFine"
                               readonly
                               disabled
@@ -254,14 +312,14 @@
                             <input
                               type="number"
                               id="totalBattingCredits"
-                              class="form-control"
+                              class="form-control green-bg"
                               name="totalBattingCredits"
                               readonly
                               disabled
                             />
                           </div>
                         </div>
-                        <div class="row mb-2">
+                        <div class="row mb-2 g-4">
                           <div class="col-12 col-md-12">
                             <label for="battingPayment" class="form-label"
                               >Batting Payment</label
@@ -276,11 +334,38 @@
                             />
                           </div>
                         </div>
+                        <div class="position-fixed end-0 bottom-0">
+                          <input
+                            type="reset"
+                            value="Clear Table"
+                            id="battingReset"
+                            class="btn btn-md rounded-0 btn-dark w-50 position-fixed start-0 bottom-0 py-3"
+                          />
+                          <input
+                            type="submit"
+                            value="Update Table"
+                            id="battingSubmit"
+                            class="btn btn-md rounded-0 btn-success w-50 position-fixed end-0 bottom-0 py-3"
+                          />
+                        </div>
                       </form>
                     </div>
                   </div>
                 </div>
+                <table
+                  class="table table-light table-hover m-0"
+                  id="battingPointsTable"
+                >
+                  <thead>
+                    <tr>
+                      <th>Player Name</th>
+                      <th>Fine Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
               </div>
+
               <div
                 class="tab-pane fade"
                 id="nav-profile"
@@ -291,13 +376,41 @@
                 <div class="container p-4 bg-white">
                   <div class="row">
                     <div
-                      class="col-12 col-md-8 offset-md-2 heading-bg mb-5"
+                      class="col-12 col-md-8 offset-md-2 heading-bg mb-5 d-none d-sm-block"
                     ></div>
                   </div>
                   <div class="row">
                     <div class="col-12 col-md-8 offset-md-2">
-                      <form>
-                        <div class="row mb-2">
+                      <form id="myFormBowling">
+                        <div class="row mb-2 g-4">
+                          <div class="col-12">
+                            <label for="playerName" class="form-label"
+                              >Player Name</label
+                            >
+                            <select
+                              id="playerNameBowling"
+                              class="form-select"
+                              name="playerName"
+                              required
+                            >
+                              <option value="Select a Player" selected>
+                                Select a Player
+                              </option>
+                              <option value="Sathish">Sathish</option>
+                              <option value="Varun">Varun</option>
+                              <option value="Prabhakaran">Prabhakaran</option>
+                              <option value="Barathi">Barathi</option>
+                              <option value="Ezhilan">Ezhilan</option>
+                              <option value="Srinath">Srinath</option>
+                              <option value="Sakthi">Sakthi</option>
+                              <option value="Prabhakar">Prabhakar</option>
+                              <option value="Surendar">Surendar</option>
+                              <option value="Subash">Subash</option>
+                              <option value="Veera">Veera</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="row mb-2 g-4">
                           <div class="col-12 col-md-6">
                             <label for="oversBowled" class="form-label"
                               >Overs Bowled</label
@@ -324,7 +437,7 @@
                           </div>
                         </div>
 
-                        <div class="row mb-2">
+                        <div class="row mb-2 g-4">
                           <div class="col-12 col-md-6">
                             <label for="economy" class="form-label"
                               >Economy</label
@@ -353,7 +466,7 @@
                           </div>
                         </div>
 
-                        <div class="row mb-2">
+                        <div class="row mb-2 g-4">
                           <div class="col-12 col-md-6">
                             <label for="economyFine" class="form-label"
                               >Economy Fine</label
@@ -381,7 +494,7 @@
                           </div>
                         </div>
 
-                        <div class="row mb-2">
+                        <div class="row mb-2 g-4">
                           <div class="col-12 col-md-6">
                             <label for="wicketCredits" class="form-label"
                               >Wicket Credits</label
@@ -409,7 +522,7 @@
                           </div>
                         </div>
 
-                        <div class="row mb-2">
+                        <div class="row mb-2 g-4 align-items-center">
                           <div class="col-12 col-md-6">
                             <label for="maidenCredits" class="form-label"
                               >Maiden Credits</label
@@ -424,21 +537,24 @@
                             />
                           </div>
                           <div class="col-12 col-md-6">
-                            <label for="totalCredits" class="form-label"
-                              >Total Credits</label
-                            >
-                            <input
-                              type="text"
-                              id="totalCredits"
-                              name="totalCredits"
-                              class="form-control"
-                              disabled
-                              readonly
-                            />
+                            <div class="form-check">
+                              <label
+                                for="hatTrickWicket"
+                                class="form-check-label"
+                                >Hat Trick Wicket</label
+                              >
+                              <input
+                                type="checkbox"
+                                id="hatTrickWicket"
+                                name="hatTrickWicket"
+                                class="form-check-input"
+                                onchange="calculateHatTrickCredits()"
+                              />
+                            </div>
                           </div>
                         </div>
 
-                        <div class="row mb-2">
+                        <div class="row mb-2 g-4">
                           <div class="col-12 col-md-6">
                             <label for="fours" class="form-label">4's</label>
                             <input
@@ -461,10 +577,10 @@
                           </div>
                         </div>
 
-                        <div class="row mb-2">
+                        <div class="row mb-2 g-4">
                           <div class="col-12 col-md-6">
                             <label for="boundaryFine" class="form-label"
-                              >Boundary Fine:</label
+                              >Boundary Fine</label
                             >
                             <input
                               type="text"
@@ -476,32 +592,20 @@
                             />
                           </div>
                           <div class="col-12 col-md-6">
-                            <label for="twoOrMoreFours" class="form-label"
-                              >2 or More Fours in an Over</label
+                            <label for="continuousBoundary" class="form-label"
+                              >Continuous Boundaries</label
                             >
                             <input
                               type="number"
-                              id="twoOrMoreFours"
+                              id="continuousBoundary"
+                              name="continuousBoundary"
                               class="form-control"
-                              name="twoOrMoreFours"
                               required
                             />
                           </div>
                         </div>
 
-                        <div class="row mb-2">
-                          <div class="col-12 col-md-6">
-                            <label for="twoOrMoreSixes" class="form-label"
-                              >2 or More Sixes in an Over</label
-                            >
-                            <input
-                              type="number"
-                              id="twoOrMoreSixes"
-                              class="form-control"
-                              name="twoOrMoreSixes"
-                              required
-                            />
-                          </div>
+                        <div class="row mb-2 g-4">
                           <div class="col-12 col-md-6">
                             <label
                               for="continuousBoundariesFine"
@@ -511,15 +615,54 @@
                             <input
                               type="text"
                               id="continuousBoundariesFine"
-                              class="form-control"
                               name="continuousBoundariesFine"
-                              disabled
+                              class="form-control"
                               readonly
+                              disabled
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="wides" class="form-label">Wides</label>
+                            <input
+                              type="number"
+                              id="wides"
+                              name="wides"
+                              class="form-control"
+                              required
                             />
                           </div>
                         </div>
 
-                        <div class="row mb-2">
+                        <div class="row mb-2 g-4">
+                          <div class="col-12 col-md-6">
+                            <label for="wideFine" class="form-label"
+                              >Wide Fine</label
+                            >
+                            <input
+                              type="text"
+                              id="wideFine"
+                              name="wideFine"
+                              class="form-control"
+                              readonly
+                              disabled
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="totalCredits" class="form-label"
+                              >Total Credits</label
+                            >
+                            <input
+                              type="text"
+                              id="totalCredits"
+                              name="totalCredits"
+                              class="form-control green-bg"
+                              readonly
+                              disabled
+                            />
+                          </div>
+                        </div>
+
+                        <div class="row mb-2 g-4">
                           <div class="col-12 col-md-6">
                             <label for="totalFine" class="form-label"
                               >Total Fine</label
@@ -527,14 +670,14 @@
                             <input
                               type="text"
                               id="totalFine"
-                              class="form-control"
+                              class="form-control red-bg"
                               name="totalFine"
                               disabled
                               readonly
                             />
                           </div>
                         </div>
-                         <div class="row mb-2">
+                        <div class="row mb-2 g-4">
                           <div class="col-12 col-md-12">
                             <label for="bowlingPayment" class="form-label"
                               >Bowling Payment</label
@@ -549,10 +692,33 @@
                             />
                           </div>
                         </div>
+                        <input
+                          type="reset"
+                          value="Clear Table"
+                          id="bowlingReset"
+                          class="btn btn-md rounded-0 btn-dark w-50 position-fixed start-0 bottom-0 py-3"
+                        />
+                        <input
+                          type="submit"
+                          value="Update Table"
+                          class="btn btn-md rounded-0 btn-success w-50 position-fixed end-0 bottom-0 py-3"
+                        />
                       </form>
                     </div>
                   </div>
                 </div>
+                <table
+                  class="table table-light table-hover m-0"
+                  id="bowlingPointsTable"
+                >
+                  <thead>
+                    <tr>
+                      <th>Player Name</th>
+                      <th>Fine Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
               </div>
               <div
                 class="tab-pane fade"
@@ -564,45 +730,260 @@
                 <div class="container p-4 bg-white">
                   <div class="row">
                     <div
-                      class="col-12 col-md-8 offset-md-2 heading-bg mb-5"
+                      class="col-12 col-md-8 offset-md-2 heading-bg mb-5 d-none d-sm-block"
                     ></div>
                   </div>
                   <div class="row">
                     <div class="col-12 col-md-8 offset-md-2">
-                      <form>
-                        <div class="row mb-2">
-                          <div class="col-12 col-md-6"></div>
-                          <div class="col-12 col-md-6"></div>
+                      <form id="myFormFeilding">
+                        <div class="row mb-2 g-4">
+                          <div class="col-12">
+                            <label for="playerNameFielding" class="form-label"
+                              >Player Name</label
+                            >
+                            <select
+                              id="playerNameFeilding"
+                              class="form-select"
+                              name="playerName"
+                              required
+                            >
+                              <option value="Select a Player" selected>
+                                Select a Player
+                              </option>
+                              <option value="Sathish">Sathish</option>
+                              <option value="Varun">Varun</option>
+                              <option value="Prabhakaran">Prabhakaran</option>
+                              <option value="Barathi">Barathi</option>
+                              <option value="Ezhilan">Ezhilan</option>
+                              <option value="Srinath">Srinath</option>
+                              <option value="Sakthi">Sakthi</option>
+                              <option value="Prabhakar">Prabhakar</option>
+                              <option value="Surendar">Surendar</option>
+                              <option value="Subash">Subash</option>
+                              <option value="Veera">Veera</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="row mb-2 g-4">
+                          <div class="col-12 col-md-6">
+                            <label for="catchDrop" class="form-label"
+                              >Catch Drop</label
+                            >
+                            <input
+                              type="number"
+                              id="catchDrop"
+                              name="catchDrop"
+                              class="form-control"
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="catchDropFine" class="form-label"
+                              >Catch Drop Fine</label
+                            >
+                            <input
+                              type="text"
+                              id="catchDropFine"
+                              name="catchDropFine"
+                              class="form-control"
+                              readonly
+                              disabled
+                            />
+                          </div>
                         </div>
 
-                        <div class="row mb-2">
-                          <div class="col-12 col-md-6"></div>
-                          <div class="col-12 col-md-6"></div>
+                        <div class="row mb-2 g-4">
+                          <div class="col-12 col-md-6">
+                            <label class="form-label" for="catchDropBoundary"
+                              >Catch Drop with 4/6</label
+                            >
+                            <input
+                              type="number"
+                              id="catchDropBoundary"
+                              name="catchDropBoundary"
+                              class="form-control"
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label
+                              class="form-label"
+                              for="catchDropBoundaryFine"
+                              >Catch Drop with Boundary Fine</label
+                            >
+                            <input
+                              type="text"
+                              id="catchDropBoundaryFine"
+                              name="catchDropBoundaryFine"
+                              class="form-control"
+                              readonly
+                              disabled
+                            />
+                          </div>
                         </div>
 
-                        <div class="row mb-2">
-                          <div class="col-12 col-md-6"></div>
-                          <div class="col-12 col-md-6"></div>
+                        <div class="row mb-2 g-4">
+                          <div class="col-12 col-md-6">
+                            <label class="form-label" for="misfield"
+                              >Misfield</label
+                            >
+                            <input
+                              type="number"
+                              id="misfield"
+                              name="misfield"
+                              class="form-control"
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label class="form-label" for="misfieldFine"
+                              >Misfield Fine</label
+                            >
+                            <input
+                              type="text"
+                              id="misfieldFine"
+                              name="misfieldFine"
+                              class="form-control"
+                              readonly
+                              disabled
+                            />
+                          </div>
                         </div>
 
-                        <div class="row mb-2">
-                          <div class="col-12 col-md-6"></div>
-                          <div class="col-12 col-md-6"></div>
+                        <div class="row mb-2 g-4">
+                          <div class="col-12 col-md-6">
+                            <label class="form-label" for="runOutMiss"
+                              >Run out Miss</label
+                            >
+                            <input
+                              type="number"
+                              id="runOutMiss"
+                              name="runOutMiss"
+                              class="form-control"
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label class="form-label" for="runOutMissFine"
+                              >Run out Miss Fine</label
+                            >
+                            <input
+                              type="text"
+                              id="runOutMissFine"
+                              name="runOutMissFine"
+                              class="form-control"
+                              readonly
+                              disabled
+                            />
+                          </div>
                         </div>
 
-                        <div class="row mb-2">
-                          <div class="col-12 col-md-6"></div>
-                          <div class="col-12 col-md-6"></div>
+                        <div class="row mb-2 g-4">
+                          <div class="col-12 col-md-6">
+                            <label class="form-label" for="dismissals"
+                              >Dismissals</label
+                            >
+                            <input
+                              type="number"
+                              id="dismissals"
+                              name="dismissals"
+                              class="form-control"
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label class="form-label" for="dismissalCredits"
+                              >Dismissal Credits</label
+                            >
+                            <input
+                              type="text"
+                              id="dismissalCredits"
+                              name="dismissalCredits"
+                              class="form-control green-bg"
+                              readonly
+                              disabled
+                            />
+                          </div>
                         </div>
 
-                        <div class="row mb-2">
-                          <div class="col-12 col-md-6"></div>
-                          <div class="col-12 col-md-6"></div>
+                        <div class="row mb-2 g-4">
+                          <div class="col-12 col-md-6">
+                            <label class="form-label" for="overthrow"
+                              >Overthrow</label
+                            >
+                            <input
+                              type="number"
+                              id="overthrow"
+                              class="form-control"
+                              name="overthrow"
+                            />
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label class="form-label" for="overthrowFine"
+                              >Overthrow Fine</label
+                            >
+                            <input
+                              type="text"
+                              id="overthrowFine"
+                              name="overthrowFine"
+                              class="form-control"
+                              readonly
+                              disabled
+                            />
+                          </div>
                         </div>
+                        <div class="row mb-2 g-4">
+                          <div class="col-12 col-md-6">
+                            <label class="form-label" for="totalFieldingFine"
+                              >Total Fielding Fine</label
+                            >
+                            <input
+                              type="text"
+                              id="totalFieldingFine"
+                              name="totalFieldingFine"
+                              class="form-control red-bg"
+                              readonly
+                              disabled
+                            />
+                          </div>
+                        </div>
+                        <div class="row mb-2 g-4">
+                          <div class="col-12">
+                            <label class="form-label" for="overallFieldingFine"
+                              >Fielding payment</label
+                            >
+                            <input
+                              type="text"
+                              id="overallFieldingFine"
+                              name="overallFieldingFine"
+                              class="form-control result"
+                              readonly
+                              disabled
+                            />
+                          </div>
+                        </div>
+                        <input
+                          type="reset"
+                          value="Clear Table"
+                          id="bowlingReset"
+                          class="btn btn-md rounded-0 btn-dark w-50 position-fixed start-0 bottom-0 py-3"
+                        />
+                        <input
+                          type="submit"
+                          value="Update Table"
+                          class="btn btn-md rounded-0 btn-success w-50 position-fixed end-0 bottom-0 py-3"
+                        />
                       </form>
                     </div>
                   </div>
                 </div>
+                <table
+                  class="table table-light table-hover m-0"
+                  id="feildingPointsTable"
+                >
+                  <thead>
+                    <tr>
+                      <th>Player Name</th>
+                      <th>Fine Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
               </div>
               <div
                 class="tab-pane fade"
@@ -614,45 +995,339 @@
                 <div class="container p-4 bg-white">
                   <div class="row">
                     <div
-                      class="col-12 col-md-8 offset-md-2 heading-bg mb-5"
+                      class="col-12 col-md-8 offset-md-2 heading-bg mb-5 d-none d-sm-block"
                     ></div>
                   </div>
                   <div class="row">
                     <div class="col-12 col-md-8 offset-md-2">
                       <form>
-                        <div class="row mb-2">
-                          <div class="col-12 col-md-6"></div>
-                          <div class="col-12 col-md-6"></div>
-                        </div>
-
-                        <div class="row mb-2">
-                          <div class="col-12 col-md-6"></div>
-                          <div class="col-12 col-md-6"></div>
-                        </div>
-
-                        <div class="row mb-2">
-                          <div class="col-12 col-md-6"></div>
-                          <div class="col-12 col-md-6"></div>
-                        </div>
-
-                        <div class="row mb-2">
-                          <div class="col-12 col-md-6"></div>
-                          <div class="col-12 col-md-6"></div>
-                        </div>
-
-                        <div class="row mb-2">
-                          <div class="col-12 col-md-6"></div>
-                          <div class="col-12 col-md-6"></div>
-                        </div>
-
-                        <div class="row mb-2">
-                          <div class="col-12 col-md-6"></div>
-                          <div class="col-12 col-md-6"></div>
+                        <div class="row mb-2 g-4">
+                          <div class="col-12 col-md-12">
+                            <label for="playerSelect" class="form-label"
+                              >Player</label
+                            >
+                            <select
+                              id="playerSelect"
+                              name="playerSelect"
+                              class="form-select"
+                            >
+                              <option value="Select a Player" selected>
+                                Select a Player
+                              </option>
+                              <option value="Sathish">Sathish</option>
+                              <option value="Varun">Varun</option>
+                              <option value="Prabhakaran">Prabhakaran</option>
+                              <option value="Barathi">Barathi</option>
+                              <option value="Ezhilan">Ezhilan</option>
+                              <option value="Srinath">Srinath</option>
+                              <option value="Sakthi">Sakthi</option>
+                              <option value="Prabhakar">Prabhakar</option>
+                              <option value="Surendar">Surendar</option>
+                              <option value="Subash">Subash</option>
+                              <option value="Veera">Veera</option>
+                            </select>
+                          </div>
+                          <div class="row mb-2 g-4">
+                            <div class="col-12 col-md-6">
+                              <div class="form-check">
+                                <label
+                                  for="within5Overs"
+                                  class="form-check-label"
+                                  >Within 5 Overs</label
+                                >
+                                <input
+                                  type="checkbox"
+                                  id="within5Overs"
+                                  class="form-check-input"
+                                  name="within5Overs"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="oversCame" class="form-label"
+                              >Overs Came into the match</label
+                            >
+                            <input
+                              type="number"
+                              id="oversCame"
+                              name="oversCame"
+                              class="form-control"
+                              disabled
+                            />
+                          </div>
                         </div>
                       </form>
                     </div>
                   </div>
                 </div>
+                <table id="fineTable" class="table table-light table-hover m-0">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Fine Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="umpires-tab-pane"
+                role="tabpanel"
+                aria-labelledby="umpires-tab-pane"
+                tabindex="0"
+              >
+                <div class="container p-4 bg-white">
+                  <div class="row">
+                    <div
+                      class="col-12 col-md-8 offset-md-2 heading-bg mb-5 d-none d-sm-block"
+                    ></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 col-md-8 offset-md-2">
+                      <form>
+                        <div class="row">
+                          <h4 class="my-3">1st Match</h4>
+                        </div>
+                        <div class="row">
+                          <h6 class="my-3">1st innings</h6>
+                        </div>
+                        <div class="row mb-2 g-4">
+                          <div class="col-12 col-md-6">
+                            <label for="umpire1" class="form-label"
+                              >Select Straight Umpire 1st Innings:</label
+                            >
+                            <select
+                              id="umpire1"
+                              name="umpireSelect"
+                              class="form-select"
+                            >
+                              <option value="Select a Player" selected>
+                                Select a Player
+                              </option>
+                              <option value="Sathish">Sathish</option>
+                              <option value="Varun">Varun</option>
+                              <option value="Prabhakaran">Prabhakaran</option>
+                              <option value="Barathi">Barathi</option>
+                              <option value="Ezhilan">Ezhilan</option>
+                              <option value="Srinath">Srinath</option>
+                              <option value="Sakthi">Sakthi</option>
+                              <option value="Prabhakar">Prabhakar</option>
+                              <option value="Surendar">Surendar</option>
+                              <option value="Subash">Subash</option>
+                              <option value="Veera">Veera</option>
+                            </select>
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="umpire2" class="form-label"
+                              >Select Leg Umpire 1st Innings:</label
+                            >
+                            <select
+                              id="umpire2"
+                              name="umpireSelect"
+                              class="form-select"
+                            >
+                              <option value="Select a Player" selected>
+                                Select a Player
+                              </option>
+                              <option value="Sathish">Sathish</option>
+                              <option value="Varun">Varun</option>
+                              <option value="Prabhakaran">Prabhakaran</option>
+                              <option value="Barathi">Barathi</option>
+                              <option value="Ezhilan">Ezhilan</option>
+                              <option value="Srinath">Srinath</option>
+                              <option value="Sakthi">Sakthi</option>
+                              <option value="Prabhakar">Prabhakar</option>
+                              <option value="Surendar">Surendar</option>
+                              <option value="Subash">Subash</option>
+                              <option value="Veera">Veera</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <h6 class="my-3">2nd innings</h6>
+                        </div>
+                        <div class="row mb-2 g-4">
+                          <div class="col-12 col-md-6">
+                            <label for="umpire3" class="form-label"
+                              >Select Straight Umpire 2nd Innings:</label
+                            >
+                            <select
+                              id="umpire3"
+                              name="umpireSelect"
+                              class="form-select"
+                            >
+                              <option value="Select a Player" selected>
+                                Select a Player
+                              </option>
+                              <option value="Sathish">Sathish</option>
+                              <option value="Varun">Varun</option>
+                              <option value="Prabhakaran">Prabhakaran</option>
+                              <option value="Barathi">Barathi</option>
+                              <option value="Ezhilan">Ezhilan</option>
+                              <option value="Srinath">Srinath</option>
+                              <option value="Sakthi">Sakthi</option>
+                              <option value="Prabhakar">Prabhakar</option>
+                              <option value="Surendar">Surendar</option>
+                              <option value="Subash">Subash</option>
+                              <option value="Veera">Veera</option>
+                            </select>
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="umpire4" class="form-label"
+                              >Select Leg Umpire 2nd Innings:</label
+                            >
+                            <select
+                              id="umpire4"
+                              name="umpireSelect"
+                              class="form-select"
+                            >
+                              <option value="Select a Player" selected>
+                                Select a Player
+                              </option>
+                              <option value="Sathish">Sathish</option>
+                              <option value="Varun">Varun</option>
+                              <option value="Prabhakaran">Prabhakaran</option>
+                              <option value="Barathi">Barathi</option>
+                              <option value="Ezhilan">Ezhilan</option>
+                              <option value="Srinath">Srinath</option>
+                              <option value="Sakthi">Sakthi</option>
+                              <option value="Prabhakar">Prabhakar</option>
+                              <option value="Surendar">Surendar</option>
+                              <option value="Subash">Subash</option>
+                              <option value="Veera">Veera</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <h4 class="my-3">2nd Match</h4>
+                        </div>
+                        <div class="row">
+                          <h6 class="my-3">1st innings</h6>
+                        </div>
+                        <div class="row mb-2 g-4">
+                          <div class="col-12 col-md-6">
+                            <label for="umpire5" class="form-label"
+                              >Select Straight Umpire 1st Innings:</label
+                            >
+                            <select
+                              id="umpire5"
+                              name="umpireSelect"
+                              class="form-select"
+                            >
+                              <option value="Select a Player" selected>
+                                Select a Player
+                              </option>
+                              <option value="Sathish">Sathish</option>
+                              <option value="Varun">Varun</option>
+                              <option value="Prabhakaran">Prabhakaran</option>
+                              <option value="Barathi">Barathi</option>
+                              <option value="Ezhilan">Ezhilan</option>
+                              <option value="Srinath">Srinath</option>
+                              <option value="Sakthi">Sakthi</option>
+                              <option value="Prabhakar">Prabhakar</option>
+                              <option value="Surendar">Surendar</option>
+                              <option value="Subash">Subash</option>
+                              <option value="Veera">Veera</option>
+                            </select>
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="umpire6" class="form-label"
+                              >Select Leg Umpire 1st Innings:</label
+                            >
+                            <select
+                              id="umpire6"
+                              name="umpireSelect"
+                              class="form-select"
+                            >
+                              <option value="Select a Player" selected>
+                                Select a Player
+                              </option>
+                              <option value="Sathish">Sathish</option>
+                              <option value="Varun">Varun</option>
+                              <option value="Prabhakaran">Prabhakaran</option>
+                              <option value="Barathi">Barathi</option>
+                              <option value="Ezhilan">Ezhilan</option>
+                              <option value="Srinath">Srinath</option>
+                              <option value="Sakthi">Sakthi</option>
+                              <option value="Prabhakar">Prabhakar</option>
+                              <option value="Surendar">Surendar</option>
+                              <option value="Subash">Subash</option>
+                              <option value="Veera">Veera</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <h6 class="my-3">2nd innings</h6>
+                        </div>
+                        <div class="row mb-2 g-4">
+                          <div class="col-12 col-md-6">
+                            <label for="umpire7" class="form-label"
+                              >Select Straight Umpire 2nd Innings:</label
+                            >
+                            <select
+                              id="umpire7"
+                              name="umpireSelect"
+                              class="form-select"
+                            >
+                              <option value="Select a Player" selected>
+                                Select a Player
+                              </option>
+                              <option value="Sathish">Sathish</option>
+                              <option value="Varun">Varun</option>
+                              <option value="Prabhakaran">Prabhakaran</option>
+                              <option value="Barathi">Barathi</option>
+                              <option value="Ezhilan">Ezhilan</option>
+                              <option value="Srinath">Srinath</option>
+                              <option value="Sakthi">Sakthi</option>
+                              <option value="Prabhakar">Prabhakar</option>
+                              <option value="Surendar">Surendar</option>
+                              <option value="Subash">Subash</option>
+                              <option value="Veera">Veera</option>
+                            </select>
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <label for="umpire8" class="form-label"
+                              >Select Leg Umpire 2nd Innings:</label
+                            >
+                            <select
+                              id="umpire8"
+                              name="umpireSelect"
+                              class="form-select"
+                            >
+                              <option value="Select a Player" selected>
+                                Select a Player
+                              </option>
+                              <option value="Sathish">Sathish</option>
+                              <option value="Varun">Varun</option>
+                              <option value="Prabhakaran">Prabhakaran</option>
+                              <option value="Barathi">Barathi</option>
+                              <option value="Ezhilan">Ezhilan</option>
+                              <option value="Srinath">Srinath</option>
+                              <option value="Sakthi">Sakthi</option>
+                              <option value="Prabhakar">Prabhakar</option>
+                              <option value="Surendar">Surendar</option>
+                              <option value="Subash">Subash</option>
+                              <option value="Veera">Veera</option>
+                            </select>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <table id="umpireTable" class="table table-light m-0">
+                  <thead>
+                    <tr>
+                      <th>Umpire Name</th>
+                      <th>Credits</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
               </div>
             </div>
           </div>

@@ -2,15 +2,31 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  height: 100vh;
-  overflow: hidden;
+  /* height: 100vh;
+  overflow: hidden; */
   background: #f1f1f1;
+  padding-bottom: 100px;
 }
 
-.tab-content {
+button:focus,
+a:focus,
+input:focus {
+  box-shadow: none !important;
+}
+
+input,select{
+  border-radius: 0 !important;
+}
+
+input:focus {
+  border: 1px solid #213c71 !important;
+}
+
+/* .tab-content {
   height: 80vh;
   overflow-y: auto;
-}
+   padding-bottom: 100px;
+} */
 
 .orangered-text {
   color: orangered !important;
@@ -34,7 +50,11 @@ input[type="number"] {
 
 img.tab-icons {
   width: 20px;
-  margin-left: 12px;
+  /* margin-left: 12px; */
+}
+
+img.tab-icons.hat {
+  width: 30px;
 }
 
 .bg-darkblue {
@@ -42,10 +62,11 @@ img.tab-icons {
 }
 
 .nav-link.active {
-  background-color: #e9e9e9 !important;
+  background-color: #89ccfb !important;
 }
 .result {
-  background: #1dbc96 !important;
+  color: #1dbc96 !important;
+  /* background: transparent !important; */
   border: none;
   padding: 0;
   font-size: 36px;
@@ -53,8 +74,67 @@ img.tab-icons {
   text-align: center;
 }
 
+.green-bg {
+  background-color: rgb(59, 177, 144, 0.3) !important;
+  border-color: rgb(59, 177, 144, 0.3) !important;
+}
+
+.red-bg {
+  background-color: rgb(223, 54, 54, 0.3) !important;
+  border-color: rgb(223, 54, 54, 0.3) !important;
+}
+
+.nav-tabs {
+  top: 60px;
+}
+.tab-content {
+  padding-top: 128px;
+}
+
+.openpdf {
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333;
+  background: url(../images/pdf.png) no-repeat 7% center/30px;
+  font-size: 0;
+  height: 40px;
+  width: 30px;
+}
+
+.form-check-label {
+  display: block !important;
+}
+
+.form-check .form-check-input {
+  width: 2rem;
+  height: 2rem;
+  margin-top: 0.25rem !important;
+  margin-left: 0;
+}
+
+.form-check {
+  padding-left: 0 !important;
+}
+
+.container-fluid.parent + div a {
+  display: none !important;
+}
+
 @media screen and (max-width: 768px) {
   .heading-bg {
-    background: url("../images/cric.jpg") no-repeat center center / 100%;
+    /* background: url("../images/cric.jpg") no-repeat center center / 100%; */
+    height: 80px;
+  }
+  .nav-link {
+    font-size: 0;
+    width: 20%;
+  }
+  .openpdf {
+    position: static !important;
+    display: block;
+    text-align: center;
+    transform: translateY(0);
+    padding: 1rem 1rem 1rem 3rem;
   }
 }
